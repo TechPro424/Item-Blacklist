@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "id": "item-blacklist",
+  "version": "${version}",
+
+  "name": "Item Blacklist",
+  "description": "A mod to \"remove\" items from the game.",
+  "authors": [
+    "TechPro424"
+  ],
+  "contact": {
+    "homepage": "https://modrinth.com/user/TechPro424",
+    "sources": ""
+  },
+
+  "license": "GNU Lesser General Public License v3.0 only",
+  "icon": "assets/itemblacklist/icon.png",
+  "environment": "*",
+
+  "entrypoints": {
+    "main": [
+      "in.techpro424.itemblacklist.ItemBlacklist"
+    ]
+  },
+  "mixins": [
+    "itemblacklist.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.14.17",
+    "fabric-api": ">=0.75.3",
+    "minecraft": ">=1.19.4",
+    "completeconfig-base" : ">=2.3.1",
+    "java": ">=17"
+  },
+  "recommends": {
+    "mixintrace": "*"
+  },
+  "suggests": {
+    "mixintrace": "*"
+  }
+}

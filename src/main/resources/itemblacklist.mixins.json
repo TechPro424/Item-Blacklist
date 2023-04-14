@@ -1,0 +1,18 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "in.TechPro424.itemblacklist.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "EntityItemDeleteMixin",
+    "PlayerDropItemDeleteMixin",
+    "PlayerPickupMixin",
+    "PlayerInventoryMixin",
+    "CraftingInventoryMixin",
+    "LootableContainerBlockEntityMixin"
+  ],
+  "server": [],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
