@@ -65,7 +65,7 @@ dependencies {
 	// modImplementation "net.fabricmc.fabric-api:fabric-api-deprecated:${project.fabric_version}"
 	modApi include("maven.modrinth:mixintrace:1.1.1+1.17")
 
-	modImplementation("com.github.Lortseam.completeconfig:base:2.3.1")
+	modImplementation("com.github.Lortseam.completeconfig:base:2.1.0")
 }
 
 modrinth {
