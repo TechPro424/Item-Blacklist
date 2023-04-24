@@ -2,11 +2,11 @@ package in.techpro424.itemblacklist.util;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.registry.Registries;
+import net.minecraft.util.registry.Registry;
 
 public class Id {
     public static String getIdFromItem(Item item) {
-        String id = Registries.ITEM.getId(item).toString();
+        String id = Registry.ITEM.getId(item).toString();
         return id;
     }
     
