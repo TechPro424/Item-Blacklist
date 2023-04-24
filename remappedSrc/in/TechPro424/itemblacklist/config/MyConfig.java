@@ -34,7 +34,7 @@ public class MyConfig extends Config {
     }
 
     public MyConfig() {
-        super(ConfigOptions.mod("itemblacklist"));
+        super(ConfigOptions.mod("item-blacklist"));
     }
     
 }
