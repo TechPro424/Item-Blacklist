@@ -11,7 +11,11 @@ Item Blacklist is a server-side mod to "remove" items from the game.
 
 The mod has a command-based configuration system that allows server administrators to add or remove items from the blacklist. Players will be unable to interact with blacklisted items in any way whatsoever.
 
-This mod also requires [version 2.3.1 of the CompleteConfig mod](https://modrinth.com/mod/completeconfig/version/2.3.1) to be installed in order for the configuration system to function properly.
+This mod also requires [the CompleteConfig mod](https://modrinth.com/mod/completeconfig/) to be installed in order for the configuration system to function properly. 
+
+(Make sure to install the latest version of CompleteConfig that is available for your server's Minecraft version)
+
+Note: If players attempt to craft blacklisted items, neither the blacklisted item nor the items used up in crafting it can be recovered, which will result in players losing the input items and not getting anything in return.
 
 ## Credits
  - Huge shoutout to [robotkoer](https://modrinth.com/user/robotkoer) for creating and maintaining the [Fabulously Optimized](https://modrinth.com/modpack/fabulously-optimized) modpack, as it was the only way I could play Minecraft properly! Without this modpack, I would have never played MC Java, and as a result, never gotten into modding the game.
