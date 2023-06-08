@@ -11,20 +11,20 @@ public class Config {
 
     static Config instance = JsonOperations.loadConfigFromFile();
 
-    public void addIdToConfig(String id) {
+    public static void addIdToConfig(String id) {
         if(configIncludesId(id)) return;
-        itemBlacklist.add(id);
+        instance.itemBlacklist.add(id);
         JsonOperations.writeConfig(true);
     }
 
-    public void removeIdFromConfig(String id) {
+    public static void removeIdFromConfig(String id) {
         if(!configIncludesId(id)) return;
-        itemBlacklist.remove(id);
+        instance.itemBlacklist.remove(id);
         JsonOperations.writeConfig(true);
     }
 
-    public String listConfig() {
-        return FormatArrayList.formatArrayList(itemBlacklist);
+    public static String listConfig() {
+        return FormatArrayList.formatArrayList(instance.itemBlacklist);
     }
 
     public static boolean configIncludesId(String id) {
