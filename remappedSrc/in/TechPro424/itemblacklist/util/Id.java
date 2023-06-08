@@ -1,5 +1,6 @@
 package in.techpro424.itemblacklist.util;
 
+import in.techpro424.itemblacklist.ItemBlacklist;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
@@ -18,11 +19,11 @@ public class Id {
 
     public static void logIdOfItem(Item item) {
         String id = getIdFromItem(item);
-        Logging.LOGGER.info("The ID of the item you just dropped is " + id);
+        ItemBlacklist.LOGGER.info("The ID of the item you just dropped is " + id);
     }
 
     public static void logIdOfStack(ItemStack stack) {
         String id = getIdFromItemStack(stack);
-        Logging.LOGGER.info("The ID of the item you just dropped is " + id);
+        ItemBlacklist.LOGGER.info("The ID of the item you just dropped is " + id);
     }
 }
