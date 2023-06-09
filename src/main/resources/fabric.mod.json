@@ -34,9 +34,11 @@
     "java": ">=17"
   },
   "recommends": {
-    "mixintrace": "*"
+    "mixintrace": "*",
+    "suggestionproviderfix": "*"
   },
   "suggests": {
-    "mixintrace": "*"
+    "mixintrace": "*",
+    "suggestionproviderfix": "*"
   }
 }
