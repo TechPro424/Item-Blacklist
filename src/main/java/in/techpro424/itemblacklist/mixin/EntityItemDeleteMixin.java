@@ -5,7 +5,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import in.techpro424.itemblacklist.ItemBlacklist;
+import in.techpro424.itemblacklist.altconfig.Config;
 import in.techpro424.itemblacklist.util.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.ItemEntity;
@@ -18,7 +18,7 @@ public abstract class EntityItemDeleteMixin {
     @Inject(at = @At("HEAD"), method = "Lnet/minecraft/entity/Entity;dropStack(Lnet/minecraft/item/ItemStack;F)Lnet/minecraft/entity/ItemEntity;", cancellable = true)
     private void dropStackCancel(ItemStack stack, float yOffset, CallbackInfoReturnable<ItemEntity> cir) {
         String id = Id.getIdFromItemStack(stack);
-        if(ItemBlacklist.CONFIG.configIncludesId(id)) cir.cancel();
+        if(Config.configIncludesId(id)) cir.cancel();
 
     }
 }

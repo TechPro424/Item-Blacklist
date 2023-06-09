@@ -5,7 +5,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import in.techpro424.itemblacklist.ItemBlacklist;
+import in.techpro424.itemblacklist.altconfig.Config;
 import in.techpro424.itemblacklist.util.Id;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
@@ -16,6 +16,6 @@ public abstract interface InventoryMixin {
     private void dontSetStack(int slot, ItemStack stack, CallbackInfo ci) {
 
         String id = Id.getIdFromItemStack(stack);
-        if(ItemBlacklist.CONFIG.configIncludesId(id)) ci.cancel();
+        if(Config.configIncludesId(id)) ci.cancel();
     }
 }

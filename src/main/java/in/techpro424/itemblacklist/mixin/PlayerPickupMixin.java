@@ -6,7 +6,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import in.techpro424.itemblacklist.ItemBlacklist;
+import in.techpro424.itemblacklist.altconfig.Config;
 import in.techpro424.itemblacklist.util.*;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -27,7 +27,7 @@ public abstract class PlayerPickupMixin {
         ItemStack stack = this.getStack();
         String id = Id.getIdFromItemStack(stack);
        
-        if(ItemBlacklist.CONFIG.configIncludesId(id)) {
+        if(Config.configIncludesId(id)) {
             this.setDespawnImmediately();
             ci.cancel();
         }

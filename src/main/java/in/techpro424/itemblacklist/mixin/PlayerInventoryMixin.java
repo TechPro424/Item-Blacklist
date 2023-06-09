@@ -6,7 +6,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import in.techpro424.itemblacklist.ItemBlacklist;
+import in.techpro424.itemblacklist.altconfig.Config;
 import in.techpro424.itemblacklist.util.Id;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
@@ -19,7 +19,7 @@ public abstract class PlayerInventoryMixin {
     private void dontAddStack(int slot, ItemStack stack, CallbackInfoReturnable<Integer> callbackInfo) {
 
         String id = Id.getIdFromItemStack(stack);
-        if(ItemBlacklist.CONFIG.configIncludesId(id)) callbackInfo.cancel();
+        if(Config.configIncludesId(id)) callbackInfo.cancel();
     }
 
     //inject into insertStack method
@@ -27,7 +27,7 @@ public abstract class PlayerInventoryMixin {
     private void dontInsertStack(int slot, ItemStack stack, CallbackInfoReturnable<Integer> callbackInfo) {
 
         String id = Id.getIdFromItemStack(stack);
-        if(ItemBlacklist.CONFIG.configIncludesId(id)) callbackInfo.cancel();
+        if(Config.configIncludesId(id)) callbackInfo.cancel();
     }
 
     //inject into setStack method
@@ -35,6 +35,6 @@ public abstract class PlayerInventoryMixin {
     private void dontSetStack(int slot, ItemStack stack, CallbackInfo callbackInfo) {
 
         String id = Id.getIdFromItemStack(stack);
-        if(ItemBlacklist.CONFIG.configIncludesId(id)) callbackInfo.cancel();
+        if(Config.configIncludesId(id)) callbackInfo.cancel();
     }
 }
