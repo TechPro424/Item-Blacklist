@@ -32,22 +32,10 @@ repositories {
             includeGroup "maven.modrinth"
         }
 	}
-
-    maven {
-        url 'https://jitpack.io'
-    }
     maven {
         url "https://maven.terraformersmc.com/"
     }
-    maven {
-        url "https://maven.shedaniel.me/"
-    }
-    maven {
-      url "https://maven.siphalor.de/"
-    }
-    maven {
-      url "https://maven.isxander.dev/releases"
-    }
+   
 }
 
 dependencies {
@@ -64,8 +52,6 @@ dependencies {
 
 	// modImplementation "net.fabricmc.fabric-api:fabric-api-deprecated:${project.fabric_version}"
 	modApi include("maven.modrinth:mixintrace:1.1.1+1.17")
-
-	modImplementation("com.github.Lortseam.completeconfig:base:2.3.1")
 }
 
 modrinth {
