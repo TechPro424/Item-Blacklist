@@ -15,7 +15,7 @@ import com.google.gson.Gson;
 
 public class JsonOperations {
     public static Config config;
-    private final static Path configPath = FabricLoader.getInstance().getConfigDir().resolve("item-blacklist.json");
+    private final static Path configPath = FabricLoader.getInstance().getConfigDir().resolve("item-blacklist.jsonc");
     private final static Gson gson = new GsonBuilder().registerTypeAdapter(Config.class, new ConfigTypeAdapter()).setPrettyPrinting().create();
 
     public static Config loadConfigFromFile() {
@@ -30,6 +30,7 @@ public class JsonOperations {
             throw new RuntimeException("(timberjack-refabricated) Error while loading config, maybe you should check the mod's config file to see if it has any syntax errors.");
         }
 
+        ItemBlacklist.LOGGER.info("Config loaded successfully");
         return config;
     }
 
