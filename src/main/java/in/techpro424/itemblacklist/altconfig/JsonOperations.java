@@ -15,7 +15,7 @@ import com.google.gson.Gson;
 
 public class JsonOperations {
     public static Config config;
-    private final static Path configPath = FabricLoader.getInstance().getConfigDir().resolve("item-blacklist.jsonc");
+    private final static Path configPath = FabricLoader.getInstance().getConfigDir().resolve("item-blacklist.json");
     private final static Gson gson = new GsonBuilder().registerTypeAdapter(Config.class, new ConfigTypeAdapter()).setPrettyPrinting().create();
 
     public static Config loadConfigFromFile() {
