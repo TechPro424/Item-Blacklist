@@ -24,7 +24,7 @@ public class RemoveIdFromBlacklistCommand {
 
         Config.removeIdFromConfig(id);
 
-        context.getSource().sendFeedback(Text.literal("Removed §b" + id + "§r from the blacklist."), true);
+        context.getSource().sendFeedback(() -> Text.literal("Removed §b" + id + "§r from the blacklist."), true);
         return 1;
     }
 }

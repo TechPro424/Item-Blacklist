@@ -20,7 +20,7 @@ public class ListIdsInBlacklistCommand {
     public static int run(CommandContext<ServerCommandSource> context) {
         String idsInConfig = Config.listConfig();
 
-        context.getSource().sendFeedback(Text.literal(idsInConfig), true);
+        context.getSource().sendFeedback(() -> Text.literal(idsInConfig), true);
         return 1;
     }
 }
