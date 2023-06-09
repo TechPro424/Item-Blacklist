@@ -8,6 +8,13 @@ import com.google.gson.stream.JsonWriter;
 
 public class ConfigTypeAdapter extends TypeAdapter<Config> {
 
+    /* TODO find a way to add these comments to the config
+     * # The list of items to block.
+     * # Each item must be separated by a comma, and must be in the following format.
+     * # "mod_id:item_id"
+     * # For example, warped planks would be"minecraft:warped_planks"
+     */
+
     @Override
     public Config read(JsonReader in) throws IOException {
         Config config = new Config();
