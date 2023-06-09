@@ -1,4 +1,4 @@
-package in.techpro424.itemblacklist.altconfig;
+package in.techpro424.itemblacklist.config;
 
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;

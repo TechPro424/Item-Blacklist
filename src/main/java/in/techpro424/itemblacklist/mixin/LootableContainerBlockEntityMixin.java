@@ -4,7 +4,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import in.techpro424.itemblacklist.altconfig.Config;
+import in.techpro424.itemblacklist.config.Config;
 import in.techpro424.itemblacklist.util.Id;
 
 import org.spongepowered.asm.mixin.injection.At;

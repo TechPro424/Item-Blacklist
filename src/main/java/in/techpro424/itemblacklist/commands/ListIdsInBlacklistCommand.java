@@ -3,7 +3,7 @@ package in.techpro424.itemblacklist.commands;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.context.CommandContext;
 
-import in.techpro424.itemblacklist.altconfig.Config;
+import in.techpro424.itemblacklist.config.Config;
 import net.minecraft.command.CommandRegistryAccess;
 import net.minecraft.server.command.CommandManager;
 import net.minecraft.server.command.CommandManager.RegistrationEnvironment;

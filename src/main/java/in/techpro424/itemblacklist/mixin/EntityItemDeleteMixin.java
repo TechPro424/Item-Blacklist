@@ -5,7 +5,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import in.techpro424.itemblacklist.altconfig.Config;
+import in.techpro424.itemblacklist.config.Config;
 import in.techpro424.itemblacklist.util.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.ItemEntity;

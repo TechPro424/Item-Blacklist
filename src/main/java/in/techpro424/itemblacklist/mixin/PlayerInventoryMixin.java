@@ -6,7 +6,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import in.techpro424.itemblacklist.altconfig.Config;
+import in.techpro424.itemblacklist.config.Config;
 import in.techpro424.itemblacklist.util.Id;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;

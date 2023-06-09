@@ -3,7 +3,7 @@ package in.techpro424.itemblacklist;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import in.techpro424.itemblacklist.altconfig.JsonOperations;
+import in.techpro424.itemblacklist.config.JsonOperations;
 import in.techpro424.itemblacklist.util.ModCommandRegister;
 import net.fabricmc.api.ModInitializer;
 
