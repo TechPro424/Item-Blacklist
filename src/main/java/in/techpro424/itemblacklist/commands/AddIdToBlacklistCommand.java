@@ -14,7 +14,7 @@ import net.minecraft.text.Text;
 public class AddIdToBlacklistCommand {
     public static void register(CommandDispatcher<ServerCommandSource> dispatcher, CommandRegistryAccess access, RegistrationEnvironment environment) {
         
-        dispatcher.register(CommandManager.literal("addIdToBlacklist")
+        dispatcher.register(CommandManager.literal("addIdToBlacklist").requires(source -> source.hasPermissionLevel(4))
         .then(CommandManager.argument("id", StringArgumentType.greedyString())
         .executes(AddIdToBlacklistCommand::run)));
     }
