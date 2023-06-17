@@ -13,7 +13,7 @@ import net.minecraft.server.command.ServerCommandSource;
 public class ListIdsInBlacklistCommand {
     public static void register(CommandDispatcher<ServerCommandSource> dispatcher, CommandRegistryAccess access, RegistrationEnvironment environment) {
         
-        dispatcher.register(CommandManager.literal("listIdsInBlacklist")
+        dispatcher.register(CommandManager.literal("listIdsInBlacklist").requires(source -> source.hasPermissionLevel(4))
         .executes(ListIdsInBlacklistCommand::run));
     }
 
