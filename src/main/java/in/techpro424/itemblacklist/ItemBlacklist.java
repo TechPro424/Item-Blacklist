@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import in.techpro424.itemblacklist.config.JsonOperations;
 import in.techpro424.itemblacklist.util.ModCommandRegister;
 import net.fabricmc.api.ModInitializer;
+import net.minecraft.SharedConstants;
 
 public class ItemBlacklist implements ModInitializer {
     public static final String MOD_ID = "item-blacklist";
@@ -13,9 +14,16 @@ public class ItemBlacklist implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        
+        SharedConstants.isDevelopment = true;
+
         JsonOperations.loadConfigFromFile();
         ModCommandRegister.registerCommands();
+
+        /*
+         * minecraft:overworld
+           minecraft:the_nether
+           minecraft:the_end  
+         */
     }
     
 }

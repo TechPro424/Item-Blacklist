@@ -52,6 +52,7 @@ dependencies {
 
 	// modImplementation "net.fabricmc.fabric-api:fabric-api-deprecated:${project.fabric_version}"
 	modApi include("maven.modrinth:mixintrace:1.1.1+1.17")
+	modApi include("blue.endless:jankson:1.2.2")
 }
 
 modrinth {
