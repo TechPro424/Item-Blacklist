@@ -13,7 +13,6 @@ public class ItemBlacklist implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        
         JsonOperations.loadConfigFromFile();
         ModCommandRegister.registerCommands();
     }

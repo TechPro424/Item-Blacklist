@@ -6,7 +6,8 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import in.techpro424.itemblacklist.config.Config;
-import in.techpro424.itemblacklist.util.*;
+import in.techpro424.itemblacklist.util.Formatting;
+import in.techpro424.itemblacklist.util.Id;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.item.ItemStack;
@@ -21,7 +22,10 @@ public abstract class PlayerDropItemDeleteMixin {
     private void deleteItem(ItemStack stack, boolean throwRandomly, boolean retainOwnership, CallbackInfoReturnable<ItemEntity> ci) {
         
         String id = Id.getIdFromItemStack(stack);
-        if(Config.configIncludesId(id)) ci.cancel();
+        
+        String dimensionName = ((PlayerEntity)(Object)this).getWorld().getRegistryKey().getValue().toString();
+
+        if(Config.configIncludesId(id, Formatting.formatDimension(dimensionName))) ci.cancel();
 
     }
     

@@ -24,7 +24,7 @@ public class AddIdToBlacklistCommand {
 
         Config.addIdToConfig(id);
 
-        context.getSource().sendFeedback(Text.literal("Added §b" + id + "§r to the blacklist."), true);
+        context.getSource().sendFeedback(() -> Text.literal("Added §b" + id + "§r to the blacklist."), true);
         return 1;
     }
 }

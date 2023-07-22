@@ -7,6 +7,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import in.techpro424.itemblacklist.config.Config;
+import in.techpro424.itemblacklist.util.Formatting;
 import in.techpro424.itemblacklist.util.Id;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
@@ -16,25 +17,33 @@ import net.minecraft.item.ItemStack;
 public abstract class PlayerInventoryMixin {
     //inject into addStack method
     @Inject(at = @At("HEAD"), method = "Lnet/minecraft/entity/player/PlayerInventory;addStack(ILnet/minecraft/item/ItemStack;)I", cancellable = true)
-    private void dontAddStack(int slot, ItemStack stack, CallbackInfoReturnable<Integer> callbackInfo) {
+    private void dontAddStack(int slot, ItemStack stack, CallbackInfoReturnable<Integer> cir) {
 
         String id = Id.getIdFromItemStack(stack);
-        if(Config.configIncludesId(id)) callbackInfo.cancel();
+        String dimensionName = ((PlayerInventory)(Object)this).player.getWorld().getRegistryKey().getValue().toString();
+
+        if(Config.configIncludesId(id, Formatting.formatDimension(dimensionName))) cir.cancel();
     }
 
     //inject into insertStack method
     @Inject(at = @At("HEAD"), method = "Lnet/minecraft/entity/player/PlayerInventory;insertStack(ILnet/minecraft/item/ItemStack;)Z", cancellable = true)
-    private void dontInsertStack(int slot, ItemStack stack, CallbackInfoReturnable<Integer> callbackInfo) {
+    private void dontInsertStack(int slot, ItemStack stack, CallbackInfoReturnable<Integer> cir) {
 
         String id = Id.getIdFromItemStack(stack);
-        if(Config.configIncludesId(id)) callbackInfo.cancel();
+        
+        String dimensionName = ((PlayerInventory)(Object)this).player.getWorld().getRegistryKey().getValue().toString();
+
+        if(Config.configIncludesId(id, Formatting.formatDimension(dimensionName))) cir.cancel();
     }
 
     //inject into setStack method
     @Inject(at = @At("HEAD"), method = "Lnet/minecraft/entity/player/PlayerInventory;setStack(ILnet/minecraft/item/ItemStack;)V", cancellable = true)
-    private void dontSetStack(int slot, ItemStack stack, CallbackInfo callbackInfo) {
+    private void dontSetStack(int slot, ItemStack stack, CallbackInfo ci) {
 
         String id = Id.getIdFromItemStack(stack);
-        if(Config.configIncludesId(id)) callbackInfo.cancel();
+        
+        String dimensionName = ((PlayerInventory)(Object)this).player.getWorld().getRegistryKey().getValue().toString();
+
+        if(Config.configIncludesId(id, Formatting.formatDimension(dimensionName))) ci.cancel();
     }
 }

@@ -26,8 +26,10 @@ public abstract class PlayerPickupMixin {
 
         ItemStack stack = this.getStack();
         String id = Id.getIdFromItemStack(stack);
+
+        String dimensionName = player.getWorld().getRegistryKey().getValue().toString();
        
-        if(Config.configIncludesId(id)) {
+        if(Config.configIncludesId(id, dimensionName)) {
             this.setDespawnImmediately();
             ci.cancel();
         }
