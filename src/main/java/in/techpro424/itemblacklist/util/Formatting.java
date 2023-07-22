@@ -12,10 +12,11 @@ public class Formatting {
     }
 
     public static String formatDimension(String dimensionName) {
-        String[] array = dimensionName.split("minecraft:");
-        String dimensionName2 = array[1];
-        if(!dimensionName2.contains("the_")) return dimensionName2;
-        String[] array2 = dimensionName2.split("the_");
-        return array2[1];
+        return switch (dimensionName) {
+            case "minecraft:overworld" -> "overworld";
+            case "minecraft:the_nether" -> "nether";
+            case "minecraft:the_end" -> "end";
+            default -> "global";
+        };
     }
 }
