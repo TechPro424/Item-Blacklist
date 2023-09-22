@@ -18,7 +18,9 @@ public abstract class EntityItemDeleteMixin {
     @Inject(at = @At("HEAD"), method = "Lnet/minecraft/entity/Entity;dropStack(Lnet/minecraft/item/ItemStack;F)Lnet/minecraft/entity/ItemEntity;", cancellable = true)
     private void dropStackCancel(ItemStack stack, float yOffset, CallbackInfoReturnable<ItemEntity> cir) {
         String id = Id.getIdFromItemStack(stack);
-        if(Config.configIncludesId(id)) cir.cancel();
+        String dimensionName = ((Entity)(Object)this).method_48926().getRegistryKey().getValue().toString();
+
+        if(Config.configIncludesId(id, Formatting.formatDimension(dimensionName))) cir.cancel();
 
     }
 }

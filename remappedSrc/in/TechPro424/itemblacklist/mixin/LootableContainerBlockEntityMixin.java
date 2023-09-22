@@ -5,6 +5,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import in.techpro424.itemblacklist.config.Config;
+import in.techpro424.itemblacklist.util.Formatting;
 import in.techpro424.itemblacklist.util.Id;
 
 import org.spongepowered.asm.mixin.injection.At;
@@ -17,6 +18,9 @@ public abstract class LootableContainerBlockEntityMixin {
     @Inject(at = @At("HEAD"), method = "Lnet/minecraft/block/entity/LootableContainerBlockEntity;setStack(ILnet/minecraft/item/ItemStack;)V", cancellable = true)
     public void dontSetStack(int slot, ItemStack stack, CallbackInfo ci) {
         String id = Id.getIdFromItemStack(stack);
-        if(Config.configIncludesId(id)) ci.cancel();
+        
+        String dimensionName = ((LootableContainerBlockEntity)(Object)this).getWorld().getRegistryKey().getValue().toString();
+
+        if(Config.configIncludesId(id, Formatting.formatDimension(dimensionName))) ci.cancel();
     }
 }

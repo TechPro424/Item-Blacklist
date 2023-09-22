@@ -16,6 +16,6 @@ public abstract interface InventoryMixin {
     private void dontSetStack(int slot, ItemStack stack, CallbackInfo ci) {
 
         String id = Id.getIdFromItemStack(stack);
-        if(Config.configIncludesId(id)) ci.cancel();
+        if(Config.configIncludesId(id, "global")) ci.cancel();
     }
 }

@@ -14,7 +14,7 @@ import net.fabricmc.loader.api.FabricLoader;
 //CHECK https://central.sonatype.com/artifact/blue.endless/jankson/1.2.2/versions to see which version is the latest
 //All other sources are probably outdated
 public class JsonOperations {
-    private static final Path configPath = FabricLoader.getInstance().getConfigDir().resolve("auction-house.json5");
+    private static final Path configPath = FabricLoader.getInstance().getConfigDir().resolve("item-blacklist.json5");
     private static final File configFile = configPath.toFile();
     private static Jankson jankson = Jankson.builder().build();
 
