@@ -1,40 +1,41 @@
 package in.techpro424.itemblacklist.commands;
 
-import com.google.common.collect.Iterables;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.context.CommandContext;
 
 import in.techpro424.itemblacklist.config.Config;
-import net.minecraft.command.CommandRegistryAccess;
-import net.minecraft.command.argument.IdentifierArgumentType;
-import net.minecraft.server.command.CommandManager;
-import net.minecraft.server.command.ServerCommandSource;
-import net.minecraft.server.command.CommandManager.RegistrationEnvironment;
-import net.minecraft.text.Text;
+import in.techpro424.itemblacklist.util.Id;
+import net.minecraft.commands.CommandBuildContext;
+import net.minecraft.server.permissions.Permissions;
+import net.minecraft.commands.arguments.item.ItemArgument;
+import net.minecraft.world.item.Item;
+import net.minecraft.commands.Commands;
+import net.minecraft.commands.CommandSourceStack;
+import net.minecraft.commands.Commands.CommandSelection;
+import net.minecraft.network.chat.Component;
 
 public class AddIdToBlacklistCommand {
-    public static void register(CommandDispatcher<ServerCommandSource> dispatcher, CommandRegistryAccess access, RegistrationEnvironment environment) {
+    public static void register(CommandDispatcher<CommandSourceStack> dispatcher, CommandBuildContext access, CommandSelection environment) {
         
-        dispatcher.register(CommandManager.literal("addIdToBlacklist").requires(source -> source.hasPermissionLevel(4))
-        .then(CommandManager.argument("id", IdentifierArgumentType.identifier())
-        .then(CommandManager.literal("global").executes(AddIdToBlacklistCommand::run))
-        .then(CommandManager.literal("overworld").executes(AddIdToBlacklistCommand::run))
-        .then(CommandManager.literal("nether").executes(AddIdToBlacklistCommand::run))
-        .then(CommandManager.literal("end").executes(AddIdToBlacklistCommand::run))
+        dispatcher.register(Commands.literal("addItemToBlacklist").requires(source -> source.permissions().hasPermission(Permissions.COMMANDS_ADMIN))
+        .then(Commands.argument("id", ItemArgument.item(access)).executes(AddIdToBlacklistCommand::run)
         ));
 
         
     
     }
 
-    public static int run(CommandContext<ServerCommandSource> context) {
-        String id = IdentifierArgumentType.getIdentifier(context, "id").toString();
-        String blacklist = Iterables.getLast(context.getNodes()).getNode().getName();
+    public static int run(CommandContext<CommandSourceStack> context) {
+        Item item = ItemArgument.getItem(context, "id").getItem();
+        String id = Id.getIdFromItem(item);
+        if (Config.getBlacklist().contains(id)) {
+            context.getSource().sendSuccess(() -> Component.literal("§b" + id + "§r is already present in the blacklist."), true);
+        }
+        else {
+            Config.addIdToConfig(id);
+            context.getSource().sendSuccess(() -> Component.literal("Added §b" + id + "§r to the blacklist."), true);
+        }
 
-
-        Config.addIdToConfig(id, blacklist);
-
-        context.getSource().sendFeedback(() -> Text.literal("Added §b" + id + "§r to the \u00A7l" +blacklist+ "§r blacklist."), true);
         return 1;
     }
 }

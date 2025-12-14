@@ -4,28 +4,23 @@ import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.context.CommandContext;
 
 import in.techpro424.itemblacklist.config.Config;
-import in.techpro424.itemblacklist.util.Formatting;
 import net.minecraft.commands.CommandBuildContext;
 import net.minecraft.server.permissions.Permissions;
 import net.minecraft.commands.Commands;
+import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands.CommandSelection;
 import net.minecraft.network.chat.Component;
-import net.minecraft.commands.CommandSourceStack;
 
-import java.util.ArrayList;
-
-public class ListIdsInBlacklistCommand {
+public class ClearBlacklistCommand {
     public static void register(CommandDispatcher<CommandSourceStack> dispatcher, CommandBuildContext access, CommandSelection environment) {
-        
 
-        dispatcher.register(Commands.literal("listItemsInBlacklist").requires(source -> source.permissions().hasPermission(Permissions.COMMANDS_ADMIN)).executes(ListIdsInBlacklistCommand::run)
+        dispatcher.register(Commands.literal("clearBlacklist").requires(source -> source.permissions().hasPermission(Permissions.COMMANDS_ADMIN)).executes(ClearBlacklistCommand::run)
         );
     }
 
     public static int run(CommandContext<CommandSourceStack> context) {
-        ArrayList<String> blacklist = Config.getBlacklist();
-        String idsInConfig = blacklist.isEmpty() ? "Items in the blacklist:\n\nNone\n" : Formatting.formatArrayList(Config.getBlacklist());
-        context.getSource().sendSuccess(() -> Component.literal(idsInConfig), true);
+        Config.clearBlacklist();
+        context.getSource().sendSuccess(() -> Component.literal("Cleared the blacklist."), true);
         return 1;
     }
 }

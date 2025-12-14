@@ -8,29 +8,27 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import in.techpro424.itemblacklist.config.Config;
 import in.techpro424.itemblacklist.util.*;
-import net.minecraft.entity.ItemEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
+import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 
 @Mixin(ItemEntity.class)
 //Prevents players from picking up blacklisted items
 public abstract class PlayerPickupMixin {
     @Shadow
-    public abstract void setDespawnImmediately();
+    public abstract void makeFakeItem();
 
     @Shadow
-    public abstract ItemStack getStack();
+    public abstract ItemStack getItem();
 
-    @Inject(at = @At("HEAD"), method = "Lnet/minecraft/entity/ItemEntity;onPlayerCollision(Lnet/minecraft/entity/player/PlayerEntity;)V", cancellable = true)
-    private void deleteItem(PlayerEntity player, CallbackInfo ci) {
+    @Inject(at = @At("HEAD"), method = "playerTouch(Lnet/minecraft/world/entity/player/Player;)V", cancellable = true)
+    private void deleteItem(Player player, CallbackInfo ci) {
 
-        ItemStack stack = this.getStack();
+        ItemStack stack = this.getItem();
         String id = Id.getIdFromItemStack(stack);
-
-        String dimensionName = player.getWorld().getRegistryKey().getValue().toString();
        
-        if(Config.configIncludesId(id, dimensionName)) {
-            this.setDespawnImmediately();
+        if(Config.configIncludesId(id)) {
+            this.makeFakeItem();
             ci.cancel();
         }
     }

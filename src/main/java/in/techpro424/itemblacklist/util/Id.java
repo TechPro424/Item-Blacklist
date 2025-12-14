@@ -1,20 +1,18 @@
 package in.techpro424.itemblacklist.util;
 
 import in.techpro424.itemblacklist.ItemBlacklist;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.registry.Registries;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.core.registries.BuiltInRegistries;
 
 public class Id {
     public static String getIdFromItem(Item item) {
-        String id = Registries.ITEM.getId(item).toString();
-        return id;
+        return BuiltInRegistries.ITEM.getKey(item).toString();
     }
     
     public static String getIdFromItemStack(ItemStack stack) {
         Item item = stack.getItem();
-        String id = getIdFromItem(item);
-        return id;
+        return getIdFromItem(item);
     }
 
     public static void logIdOfItem(Item item) {

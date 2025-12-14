@@ -15,7 +15,7 @@ public class ListIdsInBlacklistCommand {
     public static void register(CommandDispatcher<ServerCommandSource> dispatcher, CommandRegistryAccess access, RegistrationEnvironment environment) {
         
 
-        dispatcher.register(CommandManager.literal("listIdsInBlacklist").requires(source -> source.hasPermissionLevel(4))
+        dispatcher.register(CommandManager.literal("listIdsInBlacklist").requires(source -> source.getPermissions().hasPermission(DefaultPermissions.ADMINS))
         .then(CommandManager.literal("global").executes(ListIdsInBlacklistCommand::run))
         .then(CommandManager.literal("overworld").executes(ListIdsInBlacklistCommand::run))
         .then(CommandManager.literal("nether").executes(ListIdsInBlacklistCommand::run))

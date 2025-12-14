@@ -15,7 +15,7 @@ import net.minecraft.text.Text;
 public class AddIdToBlacklistCommand {
     public static void register(CommandDispatcher<ServerCommandSource> dispatcher, CommandRegistryAccess access, RegistrationEnvironment environment) {
         
-        dispatcher.register(CommandManager.literal("addIdToBlacklist").requires(source -> source.hasPermissionLevel(4))
+        dispatcher.register(CommandManager.literal("addIdToBlacklist").requires(source -> source.getPermissions().hasPermission(DefaultPermissions.ADMINS))
         .then(CommandManager.argument("id", IdentifierArgumentType.identifier())
         .then(CommandManager.literal("global").executes(AddIdToBlacklistCommand::run))
         .then(CommandManager.literal("overworld").executes(AddIdToBlacklistCommand::run))

@@ -5,11 +5,11 @@
   "compatibilityLevel": "JAVA_17",
   "mixins": [
     "EntityItemDeleteMixin",
-    "PlayerDropItemDeleteMixin",
+    "EntityDropItemDeleteMixin",
     "PlayerPickupMixin",
-    "PlayerInventoryMixin",
-    "CraftingInventoryMixin",
-    "LootableContainerBlockEntityMixin"
+    "InventoryMixin",
+    "TransientCraftingContainerMixin",
+    "RandomizableContainerBlockEntityMixin"
   ],
   "server": [],
   "injectors": {

@@ -15,7 +15,7 @@ import net.minecraft.text.Text;
 public class RemoveIdFromBlacklistCommand {
     public static void register(CommandDispatcher<ServerCommandSource> dispatcher, CommandRegistryAccess access, RegistrationEnvironment environment) {
 
-        dispatcher.register(CommandManager.literal("removeIdToBlacklist").requires(source -> source.hasPermissionLevel(4))
+        dispatcher.register(CommandManager.literal("removeIdToBlacklist").requires(source -> source.getPermissions().hasPermission(DefaultPermissions.ADMINS))
         .then(CommandManager.argument("id", IdentifierArgumentType.identifier())
         .then(CommandManager.literal("global").executes(RemoveIdFromBlacklistCommand::run))
         .then(CommandManager.literal("overworld").executes(RemoveIdFromBlacklistCommand::run))
