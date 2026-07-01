@@ -9,7 +9,7 @@ publishMods {
     type = STABLE
 	file = remapJar.archiveFile
     modLoaders.add("fabric")
-	minecraftVersionList(${minecraft_version})
+
 
 
 //	minecraftVersionRange {
@@ -26,6 +26,7 @@ publishMods {
 		environment = SERVER_ONLY
 		displayName = "${mod_version}"
 		version = "${mod_version}"
+		 minecraftVersionList("${minecraft_version}")
 	}
 
 	github {
