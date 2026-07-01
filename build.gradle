@@ -1,9 +1,41 @@
 plugins {
-	id 'fabric-loom' version '1.14-SNAPSHOT'
+	id 'net.fabricmc.fabric-loom' version "${loom_version}"
 	id 'maven-publish'
-	id "com.modrinth.minotaur" version "2.+"
-	id "co.uzzu.dotenv.gradle" version "2.0.0"
+	id "me.modmuss50.mod-publish-plugin" version "2.1.1"
 }
+
+publishMods {
+    changelog = "# Markdown changelog content"
+    type = STABLE
+	file = remapJar.archiveFile
+    modLoaders.add("fabric")
+	minecraftVersions.add("${minecraft_version}")
+
+//	minecraftVersionRange {
+//            start = "1.19.4"
+//            end = "1.20.2" // Set to "latest" or "latestRelease" to use the latest Minecraft release
+//
+//        }
+
+	modrinth {
+		accessToken = providers.environmentVariable("MODRINTH_API_KEY")
+		projectDescription = providers.fileContents(layout.projectDirectory.file("README.md")).asText
+		projectId = "6tCxJsSq"
+		requires("fabric-api")
+		environment = SERVER_ONLY
+		displayName = "${mod_version}"
+	}
+
+	github {
+        accessToken = providers.environmentVariable("GITHUB_TOKEN")
+        repository = "TechPro424/Item-Blacklist"
+        commitish = "main" // This is the branch the release tag will be created from
+		tagName = "v${mod_version}"
+		displayName = "v${mod_version}"
+    }
+
+}
+
 
 base {
 	archivesName = project.archives_base_name
@@ -36,7 +68,7 @@ repositories {
     maven {
         url "https://maven.terraformersmc.com/"
     }
-   
+
 }
 
 dependencies {
@@ -48,25 +80,24 @@ dependencies {
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
-	// Uncomment the following line to enable the deprecated Fabric API modules. 
+	// Uncomment the following line to enable the deprecated Fabric API modules.
 	// These are included in the Fabric API production distribution and allow you to update your mod to the latest modules at a later more convenient time.
 
 	// modImplementation "net.fabricmc.fabric-api:fabric-api-deprecated:${project.fabric_version}"
 	modApi include("maven.modrinth:mixintrace:1.1.1+1.17")
 	modApi include("blue.endless:jankson:1.2.3")
+
+
 }
 
-modrinth {
-	token = env.fetch("MODRINTH_TOKEN")
-	projectId = "item-blacklist"
-    syncBodyFrom = rootProject.file("README.md").text
-}
+
 
 processResources {
+	def version = project.version
 	inputs.property "version", project.version
 
 	filesMatching("fabric.mod.json") {
-		expand "version": inputs.properties.version
+		expand "version": version
 	}
 }
 
