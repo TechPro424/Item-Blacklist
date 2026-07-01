@@ -1,5 +1,5 @@
 plugins {
-	id 'net.fabricmc.fabric-loom' version "${loom_version}"
+	id 'net.fabricmc.fabric-loom-remap' version "${loom_version}"
 	id 'maven-publish'
 	id "me.modmuss50.mod-publish-plugin" version "2.1.1"
 }
@@ -9,7 +9,8 @@ publishMods {
     type = STABLE
 	file = remapJar.archiveFile
     modLoaders.add("fabric")
-	minecraftVersions.add("${minecraft_version}")
+	minecraftVersionList(${minecraft_version})
+
 
 //	minecraftVersionRange {
 //            start = "1.19.4"
@@ -17,13 +18,14 @@ publishMods {
 //
 //        }
 
-	modrinth {
+	 modrinth {
 		accessToken = providers.environmentVariable("MODRINTH_API_KEY")
 		projectDescription = providers.fileContents(layout.projectDirectory.file("README.md")).asText
 		projectId = "6tCxJsSq"
 		requires("fabric-api")
 		environment = SERVER_ONLY
 		displayName = "${mod_version}"
+		version = "${mod_version}"
 	}
 
 	github {
