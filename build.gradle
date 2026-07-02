@@ -1,5 +1,5 @@
 plugins {
-	id 'net.fabricmc.fabric-loom-remap' version "${loom_version}"
+	id 'net.fabricmc.fabric-loom' version "${loom_version}"
 	id 'maven-publish'
 	id "me.modmuss50.mod-publish-plugin" version "2.1.1"
 }
@@ -11,7 +11,7 @@ loom {
 publishMods {
     changelog = providers.fileContents(layout.projectDirectory.file("CHANGELOG.md")).asText
     type = STABLE
-	file = remapJar.archiveFile
+	file = jar.archiveFile
     modLoaders.add("fabric")
 
 
@@ -81,18 +81,17 @@ repositories {
 dependencies {
 	// To change the versions see the gradle.properties file
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
-	mappings loom.officialMojangMappings()
-	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+	implementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
 	// Fabric API. This is technically optional, but you probably want it anyway.
-	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+	implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
 
 	// Uncomment the following line to enable the deprecated Fabric API modules.
 	// These are included in the Fabric API production distribution and allow you to update your mod to the latest modules at a later more convenient time.
 
-	// modImplementation "net.fabricmc.fabric-api:fabric-api-deprecated:${project.fabric_version}"
-	modApi include("maven.modrinth:mixintrace:1.1.1+1.17")
-	modApi include("blue.endless:jankson:1.2.3")
+	// implementation "net.fabricmc.fabric-api:fabric-api-deprecated:${project.fabric_version}"
+	api include("maven.modrinth:mixintrace:1.1.1+1.17")
+	api include("blue.endless:jankson:1.2.3")
 
 
 }
@@ -105,6 +104,10 @@ processResources {
 
 	filesMatching("fabric.mod.json") {
 		expand "version": version
+		expand "loader_version": loader_version
+		expand "fabric_api_version": fabric_api_version
+		expand "minecraft_version": minecraft_version
+
 	}
 }
 
@@ -118,8 +121,8 @@ java {
 	// if it is present.
 	// If you remove this line, sources will not be generated.
 	//withSourcesJar()
-	sourceCompatibility = JavaVersion.VERSION_21
-	targetCompatibility = JavaVersion.VERSION_21
+	sourceCompatibility = JavaVersion.VERSION_25
+	targetCompatibility = JavaVersion.VERSION_25
 }
 
 jar {
