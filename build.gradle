@@ -4,6 +4,10 @@ plugins {
 	id "me.modmuss50.mod-publish-plugin" version "2.1.1"
 }
 
+loom {
+	accessWidenerPath = file("src/main/resources/item-blacklist.classtweaker")
+}
+
 publishMods {
     changelog = "# Markdown changelog content"
     type = STABLE

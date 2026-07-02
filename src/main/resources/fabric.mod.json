@@ -2,7 +2,6 @@
   "schemaVersion": 1,
   "id": "item-blacklist",
   "version": "${version}",
-
   "name": "Item Blacklist",
   "description": "A mod to \"remove\" items from the game.",
   "authors": [
@@ -16,6 +15,9 @@
   "license": "GNU Lesser General Public License v3.0 only",
   "icon": "assets/itemblacklist/icon.png",
   "environment": "*",
+
+  "accessWidener": "item-blacklist.classtweaker",
+
 
   "entrypoints": {
     "main": [
