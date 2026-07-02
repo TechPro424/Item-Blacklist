@@ -18,8 +18,8 @@ public abstract class RandomizableContainerBlockEntityMixin {
     * Prevents players from placing blacklisted items in containers
     */
     @Inject(at = @At("HEAD"), method = "setItem(ILnet/minecraft/world/item/ItemStack;)V", cancellable = true)
-    public void dontSetStack(int slot, ItemStack stack, CallbackInfo ci) {
-        String id = Id.getIdFromItemStack(stack);
+    public void dontSetStack(int slot, ItemStack itemStack, CallbackInfo ci) {
+        String id = Id.getIdFromItemStack(itemStack);
         if(Config.configIncludesId(id)) ci.cancel();
     }
 }

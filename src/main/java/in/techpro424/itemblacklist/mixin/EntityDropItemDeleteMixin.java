@@ -18,9 +18,9 @@ import net.minecraft.world.item.ItemStack;
 public abstract class EntityDropItemDeleteMixin {
 
     @Inject(at = @At("HEAD"), method = "drop(Lnet/minecraft/world/item/ItemStack;ZZ)Lnet/minecraft/world/entity/item/ItemEntity;", cancellable = true)
-    private void deleteItem(ItemStack stack, boolean dropAtSelf, boolean retainOwnership, CallbackInfoReturnable<ItemEntity> ci) {
+    private void deleteItem(ItemStack itemStack, boolean randomly, boolean thrownFromHand, CallbackInfoReturnable<ItemEntity> ci) {
         
-        String id = Id.getIdFromItemStack(stack);
+        String id = Id.getIdFromItemStack(itemStack);
         if(Config.configIncludesId(id)) ci.cancel();
 
     }

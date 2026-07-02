@@ -16,17 +16,17 @@ import net.minecraft.world.item.ItemStack;
 public abstract class InventoryMixin {
     //inject into addStack method
     @Inject(at = @At("HEAD"), method = "addResource(ILnet/minecraft/world/item/ItemStack;)I", cancellable = true)
-    private void dontAddStack(int slot, ItemStack stack, CallbackInfoReturnable<Integer> cir) {
-        String id = Id.getIdFromItemStack(stack);
+    private void dontAddStack(int slot, ItemStack itemStack, CallbackInfoReturnable<Integer> cir) {
+        String id = Id.getIdFromItemStack(itemStack);
         if(Config.configIncludesId(id)) cir.cancel();
 
     }
 
     //inject into insertStack method
     @Inject(at = @At("HEAD"), method = "add(ILnet/minecraft/world/item/ItemStack;)Z", cancellable = true)
-    private void dontInsertStack(int slot, ItemStack stack, CallbackInfoReturnable<Integer> cir) {
+    private void dontInsertStack(int slot, ItemStack itemStack, CallbackInfoReturnable<Integer> cir) {
 
-        String id = Id.getIdFromItemStack(stack);
+        String id = Id.getIdFromItemStack(itemStack);
 
 
         if(Config.configIncludesId(id)) cir.cancel();
@@ -34,9 +34,9 @@ public abstract class InventoryMixin {
 
     //inject into setStack method
     @Inject(at = @At("HEAD"), method = "setItem(ILnet/minecraft/world/item/ItemStack;)V", cancellable = true)
-    private void dontSetStack(int slot, ItemStack stack, CallbackInfo ci) {
+    private void dontSetStack(int slot, ItemStack itemStack, CallbackInfo ci) {
 
-        String id = Id.getIdFromItemStack(stack);
+        String id = Id.getIdFromItemStack(itemStack);
         
 
         if(Config.configIncludesId(id)) ci.cancel();
