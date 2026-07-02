@@ -14,5 +14,5 @@ jobs:
       - uses: actions/checkout@v4
       - run: ./gradlew build publishMods
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_PUBLISH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           MODRINTH_API_KEY: ${{ secrets.MR_PUBLISH_TOKEN }}
