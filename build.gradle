@@ -36,7 +36,7 @@ publishMods {
 	github {
         accessToken = providers.environmentVariable("GITHUB_TOKEN")
         repository = "TechPro424/Item-Blacklist"
-        commitish = "main" // This is the branch the release tag will be created from
+        commitish = "master" // This is the branch the release tag will be created from
 		tagName = "v${mod_version}"
 		displayName = "v${mod_version}"
     }
