@@ -99,15 +99,24 @@ dependencies {
 
 
 processResources {
-	def version = project.version
-	inputs.property "version", project.version
+//	def version = project.version
+//	inputs.property "version", project.version
 
+	//	filesMatching("fabric.mod.json") {
+//		expand "version": version
+//  }
+
+	var properties = [
+			"version"           : version,
+			"loader_version"    : loader_version,
+			"fabric_api_version": fabric_api_version,
+			"minecraft_version" : minecraft_version
+	]
+
+	inputs.properties properties
 	filesMatching("fabric.mod.json") {
-		expand "version": version
-		expand "loader_version": loader_version
-		expand "fabric_api_version": fabric_api_version
-		expand "minecraft_version": minecraft_version
-
+		filteringCharset = "UTF-8"
+		expand properties
 	}
 }
 
@@ -126,7 +135,7 @@ java {
 }
 
 jar {
-	inputs.property "archivesName", project.base.archivesName
+	inputs.property "archivesName", base.archivesName
 
 	from("LICENSE") {
 		rename { "${it}_${inputs.properties.archivesName}"}
