@@ -9,7 +9,7 @@ loom {
 }
 
 publishMods {
-    changelog = "# Markdown changelog content"
+    changelog = providers.fileContents(layout.projectDirectory.file("CHANGELOG.md")).asText
     type = STABLE
 	file = remapJar.archiveFile
     modLoaders.add("fabric")
