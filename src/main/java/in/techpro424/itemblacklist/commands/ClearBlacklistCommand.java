@@ -4,6 +4,7 @@ import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.context.CommandContext;
 
 import in.techpro424.itemblacklist.config.Config;
+import in.techpro424.itemblacklist.mixin.CreativeModeTabsAccessor;
 import net.minecraft.commands.CommandBuildContext;
 import net.minecraft.server.permissions.Permissions;
 import net.minecraft.commands.Commands;
@@ -20,6 +21,7 @@ public class ClearBlacklistCommand {
 
     public static int run(CommandContext<CommandSourceStack> context) {
         Config.clearBlacklist();
+        CreativeModeTabsAccessor.setCachedParameters(null);
         context.getSource().sendSuccess(() -> Component.literal("Cleared the blacklist."), true);
         return 1;
     }

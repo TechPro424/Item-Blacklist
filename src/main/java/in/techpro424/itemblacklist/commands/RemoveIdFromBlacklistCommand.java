@@ -4,6 +4,7 @@ import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.context.CommandContext;
 
 import in.techpro424.itemblacklist.config.Config;
+import in.techpro424.itemblacklist.mixin.CreativeModeTabsAccessor;
 import net.minecraft.commands.CommandBuildContext;
 import net.minecraft.server.permissions.Permissions;
 import net.minecraft.commands.arguments.IdentifierArgument;
@@ -29,6 +30,7 @@ public class RemoveIdFromBlacklistCommand {
         }
         else {
             Config.removeIdFromConfig(id);
+            CreativeModeTabsAccessor.setCachedParameters(null);
             context.getSource().sendSuccess(() -> Component.literal("Removed §b" + id + "§r from the blacklist."), true);
         }
 

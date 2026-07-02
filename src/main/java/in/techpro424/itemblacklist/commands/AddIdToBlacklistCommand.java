@@ -4,6 +4,7 @@ import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.context.CommandContext;
 
 import in.techpro424.itemblacklist.config.Config;
+import in.techpro424.itemblacklist.mixin.CreativeModeTabsAccessor;
 import in.techpro424.itemblacklist.util.Id;
 import net.minecraft.commands.CommandBuildContext;
 import net.minecraft.server.permissions.Permissions;
@@ -16,13 +17,9 @@ import net.minecraft.network.chat.Component;
 
 public class AddIdToBlacklistCommand {
     public static void register(CommandDispatcher<CommandSourceStack> dispatcher, CommandBuildContext access, CommandSelection environment) {
-        
         dispatcher.register(Commands.literal("addItemToBlacklist").requires(source -> source.permissions().hasPermission(Permissions.COMMANDS_ADMIN))
         .then(Commands.argument("id", ItemArgument.item(access)).executes(AddIdToBlacklistCommand::run)
         ));
-
-        
-    
     }
 
     public static int run(CommandContext<CommandSourceStack> context) {
@@ -33,6 +30,7 @@ public class AddIdToBlacklistCommand {
         }
         else {
             Config.addIdToConfig(id);
+            CreativeModeTabsAccessor.setCachedParameters(null);
             context.getSource().sendSuccess(() -> Component.literal("Added §b" + id + "§r to the blacklist."), true);
         }
 

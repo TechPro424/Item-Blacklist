@@ -4,6 +4,9 @@
   "package": "in.techpro424.itemblacklist.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "CreativeModeTabAccessor",
+    "CreativeModeTabMixin",
+    "CreativeModeTabsAccessor",
     "EntityDropItemDeleteMixin",
     "EntityItemDeleteMixin",
     "InventoryMixin",
