@@ -23,7 +23,7 @@ public class AddIdToBlacklistCommand {
     }
 
     public static int run(CommandContext<CommandSourceStack> context) {
-        Item item = ItemArgument.getItem(context, "id").getItem();
+        Item item = ItemArgument.getItem(context, "id").item().value();
         String id = Id.getIdFromItem(item);
         if (Config.getBlacklist().contains(id)) {
             context.getSource().sendSuccess(() -> Component.literal("§b" + id + "§r is already present in the blacklist."), true);
