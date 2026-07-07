@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 @Mixin(CreativeModeTab.class)
 public abstract class CreativeModeTabMixin {
     @WrapOperation(method = "buildContents", at = @At(value = "FIELD", target = "Lnet/minecraft/world/item/CreativeModeTab;displayItems:Ljava/util/Collection;", opcode = Opcodes.PUTFIELD))
-    private void removeBlacklistedItems(CreativeModeTab instance, Collection<ItemStack> newValue, Operation<Void> original, @Local(name = "itemDisplayBuilder") CreativeModeTab.ItemDisplayBuilder itemDisplayBuilder) {
+    private void removeBlacklistedItems(CreativeModeTab instance, Collection<ItemStack> newValue, Operation<Void> original, @Local CreativeModeTab.ItemDisplayBuilder itemDisplayBuilder) {
         ((CreativeModeTabAccessor) instance).setDisplayItems(itemDisplayBuilder.tabContents.stream().filter(itemStack -> !Config.configIncludesId(Id.getIdFromItemStack(itemStack))).collect(Collectors.toSet()));
         ((CreativeModeTabAccessor) instance).setDisplayItemsSearchTab(itemDisplayBuilder.searchTabContents.stream().filter(itemStack -> !Config.configIncludesId(Id.getIdFromItemStack(itemStack))).collect(Collectors.toSet()));
     }
