@@ -22,7 +22,7 @@ Previous versions of this mod also require [the CompleteConfig mod](https://modr
  - Another huge shoutout to [Kaupenjoe](https://www.youtube.com/@ModdingByKaupenjoe/) for his [Java Introduction](https://www.youtube.com/playlist?list=PLKGarocXCE1FeXvEogpjz4SvHxF_FJRO6) and [Minecraft Fabric Modding Tutorial](https://www.youtube.com/playlist?list=PLKGarocXCE1EMYzuBUTYjHnFeBrRFbesk) playlists! They're a great resource for anyone who wants to get started with Minecraft modding.
  - I'm truly grateful to [Devin](https://modrinth.com/user/Devin) for making an extremely high-quality icon for this mod on short notice.
  - Thanks a lot to the Fabric community on [Discord](https://discord.gg/v6v4pMv) and [GitHub Discussions](https://github.com/orgs/FabricMC/discussions) and to [Kaupenjoe's community on Discord](https://url.kaupenjoe.net/discord) for helping me out with the various issues I had when making this mod and tolerating my stupid mistakes. 
- - Thanks to [Lortseam](https://www.curseforge.com/members/lortseam_/projects) for helping me use CompleteConfig to create the configuration system used by previous versions of this mod.
+ - Thanks to [Lortseam](https://modrinth.com/user/Lortseam) for helping me use [CompleteConfig](https://modrinth.com/mod/completeconfig/) to create the configuration system used by previous versions of this mod.
  - This mod was inspired by the plugin on the official LifeSteal SMP that prevented players from interacting with harming arrows in-game, so credit goes to the LifeSteal SMP for inspiring this mod!
 
  **You may freely use this mod in any modpack, as long as the download remains hosted within the Modrinth ecosystem.**
