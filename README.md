@@ -25,6 +25,6 @@ Previous versions of this mod also require [the CompleteConfig mod](https://modr
  - Thanks to [Lortseam](https://modrinth.com/user/Lortseam) for helping me use [CompleteConfig](https://modrinth.com/mod/completeconfig/) to create the configuration system used by previous versions of this mod.
  - This mod was inspired by the plugin on the official LifeSteal SMP that prevented players from interacting with harming arrows in-game, so credit goes to the LifeSteal SMP for inspiring this mod!
 
- **You may freely use this mod in any modpack, as long as the download remains hosted within the Modrinth ecosystem.**
+ **You may freely use this mod in any modpack, as long as the download remains hosted within the CurseForge and Modrinth ecosystems.**
 
 <!-- How to add new lines in Readme: https://stackoverflow.com/questions/24575680/new-lines-inside-paragraph-in-readme-md -->
