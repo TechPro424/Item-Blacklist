@@ -20,8 +20,7 @@ public abstract class EntityDropItemDeleteMixin {
     @Inject(at = @At("HEAD"), method = "drop(Lnet/minecraft/world/item/ItemStack;ZZ)Lnet/minecraft/world/entity/item/ItemEntity;", cancellable = true)
     private void deleteItem(ItemStack itemStack, boolean randomly, boolean thrownFromHand, CallbackInfoReturnable<ItemEntity> ci) {
         
-        String id = Id.getIdFromItemStack(itemStack);
-        if(Config.configIncludesId(id)) ci.cancel();
+        if(Config.configIncludesItem(itemStack)) ci.cancel();
 
     }
     

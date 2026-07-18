@@ -19,7 +19,6 @@ public abstract class RandomizableContainerBlockEntityMixin {
     */
     @Inject(at = @At("HEAD"), method = "setItem(ILnet/minecraft/world/item/ItemStack;)V", cancellable = true)
     public void dontSetStack(int slot, ItemStack itemStack, CallbackInfo ci) {
-        String id = Id.getIdFromItemStack(itemStack);
-        if(Config.configIncludesId(id)) ci.cancel();
+        if(Config.configIncludesItem(itemStack)) ci.cancel();
     }
 }

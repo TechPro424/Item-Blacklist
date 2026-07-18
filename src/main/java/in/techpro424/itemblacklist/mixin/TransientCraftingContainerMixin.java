@@ -17,8 +17,6 @@ public abstract class TransientCraftingContainerMixin {
     @Inject(at = @At("HEAD"), method = "setItem(ILnet/minecraft/world/item/ItemStack;)V", cancellable = true)
     private void dontSetStack(int slot, ItemStack itemStack, CallbackInfo ci) {
 
-        String id = Id.getIdFromItemStack(itemStack);
-
-        if(Config.configIncludesId(id)) ci.cancel();
+        if(Config.configIncludesItem(itemStack)) ci.cancel();
     }
 }

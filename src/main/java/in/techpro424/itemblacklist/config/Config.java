@@ -1,5 +1,9 @@
 package in.techpro424.itemblacklist.config;
 
+import in.techpro424.itemblacklist.util.Id;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -32,7 +36,14 @@ public class Config {
 
     public static boolean configIncludesId(String id) {
         return instance.blacklist.contains(id);
+    }
 
+    public static boolean configIncludesItem(Item item) {
+        return configIncludesId(Id.getIdFromItem(item));
+    }
+
+    public static boolean configIncludesItem(ItemStack stack) {
+        return configIncludesItem(stack.getItem());
     }
 
 }

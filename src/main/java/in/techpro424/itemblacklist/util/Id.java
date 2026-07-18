@@ -9,11 +9,6 @@ public class Id {
     public static String getIdFromItem(Item item) {
         return BuiltInRegistries.ITEM.getKey(item).toString();
     }
-    
-    public static String getIdFromItemStack(ItemStack stack) {
-        Item item = stack.getItem();
-        return getIdFromItem(item);
-    }
 
     public static void logIdOfItem(Item item) {
         String id = getIdFromItem(item);
@@ -21,7 +16,7 @@ public class Id {
     }
 
     public static void logIdOfStack(ItemStack stack) {
-        String id = getIdFromItemStack(stack);
+        String id = getIdFromItem(stack.getItem());
         ItemBlacklist.LOGGER.info("The ID of the item you just dropped is " + id);
     }
 }

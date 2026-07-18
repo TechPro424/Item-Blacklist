@@ -19,9 +19,7 @@ public abstract class EntityItemDeleteMixin {
     
     @Inject(at = @At("HEAD"), method = "spawnAtLocation(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/phys/Vec3;)Lnet/minecraft/world/entity/item/ItemEntity;", cancellable = true)
     private void dropStackCancel(ServerLevel level, ItemStack itemStack, Vec3 offset, CallbackInfoReturnable<ItemEntity> cir) {
-        String id = Id.getIdFromItemStack(itemStack);
 
-        if(Config.configIncludesId(id)) cir.cancel();
-
+        if (Config.configIncludesItem(itemStack)) cir.cancel();
     }
 }

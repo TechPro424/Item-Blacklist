@@ -25,9 +25,8 @@ public abstract class PlayerPickupMixin {
     private void deleteItem(Player player, CallbackInfo ci) {
 
         ItemStack stack = this.getItem();
-        String id = Id.getIdFromItemStack(stack);
-       
-        if(Config.configIncludesId(id)) {
+
+        if(Config.configIncludesItem(stack)) {
             this.makeFakeItem();
             ci.cancel();
         }
