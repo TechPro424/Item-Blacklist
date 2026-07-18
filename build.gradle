@@ -33,6 +33,18 @@ publishMods {
 		 minecraftVersionList("${minecraft_version}")
 	}
 
+	curseforge {
+		accessToken = providers.environmentVariable("CF_API_KEY")
+		minecraftVersionList("${minecraft_version}")
+		projectId = "1615155"
+		javaVersions.add(JavaVersion.VERSION_25)
+		client = true
+		server = true
+		requires("306612") // Fabric API
+		changelogType = "markdown"
+		
+	}
+
 	github {
         accessToken = providers.environmentVariable("GITHUB_TOKEN")
         repository = "TechPro424/Item-Blacklist"
