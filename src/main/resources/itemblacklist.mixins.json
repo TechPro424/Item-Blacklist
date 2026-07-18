@@ -4,6 +4,7 @@
   "package": "in.techpro424.itemblacklist.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "VaultSharedDataMixin",
     "CreativeModeTabAccessor",
     "CreativeModeTabMixin",
     "CreativeModeTabsAccessor",
