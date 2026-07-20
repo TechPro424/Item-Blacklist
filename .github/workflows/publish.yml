@@ -16,3 +16,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           MODRINTH_API_KEY: ${{ secrets.MR_PUBLISH_TOKEN }}
+          CF_API_KEY: ${{ secrets.CF_API_KEY }}
