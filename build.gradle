@@ -40,7 +40,7 @@ publishMods {
 		javaVersions.add(JavaVersion.VERSION_25)
 		client = true
 		server = true
-		requires("306612") // Fabric API
+		requires("fabric-api") // Fabric API
 		changelogType = "markdown"
 		
 	}
